@@ -20,7 +20,7 @@ START_DATE = today
 END_dATE = today
 
 # Email
-EMAIL_SUBJECT = f"Coding Activity Report - {today}"
+EMAIL_SUBJECT = f"Coding Activity Report - {TODAY}"
 EMAIL_SENDER = 'max@asrez.com'
 EMAIL_RECEIVERS = [
   'maxbasecode@gmail.com',
