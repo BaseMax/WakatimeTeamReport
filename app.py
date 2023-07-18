@@ -153,19 +153,17 @@ def send_email_report(email_receiver, email_content):
 	except Exception as e:
 		print(f"Error sending email: {str(e)}")
 
-# Run the script daily at 6 AM Asia/Tehran time
+# Run the script daily
 tehran_time = get_teheran_time()
-schedule_time = tehran_time.replace(hour=0, minute=0, second=0, microsecond=0)
+schedule_time = tehran_time.replace(hour=SEND_AT_HOUR, minute=SEND_AT_MINUTE, second=SEND_AT_SECOND, microsecond=SEND_AT_MICROSECOND)
 current_time = tehran_time
 if current_time > schedule_time:
 	schedule_time += timedelta(days=1)
-
 time_diff = (schedule_time - current_time).total_seconds()
 time_diff_hours = time_diff // 3600
 
-print(f"Next email will be sent in {time_diff_hours} hours.")
-
 # Wait until the scheduled time
+print(f"Next email will be sent in {time_diff_hours} hours.")
 # time.sleep(time_diff)
 
 # Get report
@@ -173,14 +171,10 @@ report = generate_report()
 
 # Send the email report
 email_content = generate_email_report(report)
-for email_receiver in email_receivers:
+for email_receiver in EMAIL_RECEIVERS:
   send_email_report(email_receiver, email_content)
-
-# Create the message content you want to send
-# telegram_message = "Hello from the script! This is a test message for Telegram."
-# send_telegram_message(bot_token, chat_id, telegram_message)
 
 # Call the function to send the Telegram message
 telegram_message = generate_telegram_report(report)
 print(telegram_message)
-send_telegram_message(bot_token, chat_id, telegram_message)
+send_telegram_message(bot_token, CHAT_ID, telegram_message)
