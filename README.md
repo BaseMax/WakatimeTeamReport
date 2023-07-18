@@ -3,15 +3,15 @@
 This Python script generates a daily report for the team lead to monitor the hourly work of team members. It tracks the number of hours spent by team members on various projects and sends the report to a Telegram group and the director's email.
 
 ## Prerequisites
+
 Before running the script, ensure that you have the following dependencies installed:
 
-- pytz
 - time
+- pytz
+- email
 - smtplib
 - requests
-- email.mime.text
 - datetime
-- email.mime.multipart
 
 ## Configuration
 
