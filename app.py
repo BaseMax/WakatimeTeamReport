@@ -1,5 +1,5 @@
-import pytz
 import time
+import pytz
 import smtplib
 import requests
 from email.mime.text import MIMEText
